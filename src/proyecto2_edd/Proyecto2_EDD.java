@@ -6,6 +6,7 @@
 package proyecto2_edd;
 
 import java.io.FileInputStream;
+import proyecto2_edd.EDD.Burbuja;
 import proyecto2_edd.EDD.LeerJson;
 
 /**
@@ -20,14 +21,17 @@ public class Proyecto2_EDD {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //Inicio home = new Inicio();
-        //home.setVisible(true);
+        Inicio home = new Inicio();
+        home.setVisible(true);
         
         
-        LeerJson json = new LeerJson();
-        json.LeerJsonUsuario("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Usuarios.json");
+        //LeerJson json = new LeerJson();
+        //json.LeerJsonUsuario("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Usuarios.json");
         
-        
+        Burbuja bb = new Burbuja();
+        bb.LeerJsonArray("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arreglos.json");
+        bb.mostrarArray();
+        bb.ordenamientoBurbuja();
     }
     
     
