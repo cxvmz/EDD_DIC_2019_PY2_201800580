@@ -5,6 +5,12 @@
  */
 package proyecto2_edd.EDD.ARBOLB;
 
+import java.io.FileReader;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 /**
  *
  * @author Christian
@@ -119,5 +125,28 @@ public class arbolB {
         System.out.println(archivo);
         return archivo;
     
+    }
+    
+    public void LeerJsonArbol(String archivoJson,arbolB nuevo) {
+        JSONParser parser = new JSONParser();
+        try {
+            Object obj = parser.parse(new FileReader(archivoJson));
+            JSONObject jsonobj = (JSONObject) obj;
+            JSONArray input = (JSONArray) jsonobj.get("Input");
+            for (int i = 0; i < input.size(); i++) {
+                JSONObject user = (JSONObject) input.get(i);
+                String num = (String) user.get("num").toString();
+                nuevo.insertar(Integer.parseInt(num));
+                nuevo.generarcadenadotarbolb();
+                Thread.sleep(5000);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
