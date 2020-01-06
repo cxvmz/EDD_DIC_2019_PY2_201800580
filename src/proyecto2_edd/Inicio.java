@@ -5,6 +5,15 @@
  */
 package proyecto2_edd;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import proyecto2_edd.EDD.TABLAHASH.TablaHash;
+
 /**
  *
  * @author Christian
@@ -17,6 +26,7 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
     }
+    Admin admin = new Admin();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,12 +107,52 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if("admin".equals(jTextField1.getText())&&"admin".equals(jTextField2.getText())){
-            Admin ad = new Admin();
-            ad.setVisible(true);
+        if ("admin".equals(jTextField1.getText()) && "admin".equals(jTextField2.getText())) {
+            admin.setVisible(true);
             this.setVisible(false);
+        } else {
+            String carnet = jTextField1.getText();
+            String pass = jTextField2.getText();
+            String passSha256 = "";
+            try {
+                passSha256 = toHexString(getSHA(pass));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            boolean encontrado = admin.th.extraerUser(carnet, passSha256);
+            if (encontrado == true) {
+                User us = new User();
+                us.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario O Password Incorrecta", "Aprender EDD", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    public static String toHexString(byte[] hash) {
+        // Convert byte array into signum representation  
+        BigInteger number = new BigInteger(1, hash);
+
+        // Convert message digest into hex value  
+        StringBuilder hexString = new StringBuilder(number.toString(16));
+
+        // Pad with leading zeros 
+        while (hexString.length() < 32) {
+            hexString.insert(0, '0');
+        }
+
+        return hexString.toString();
+    }
+
+    public static byte[] getSHA(String input) throws NoSuchAlgorithmException {
+        // Static getInstance method is called with hashing SHA  
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+        // digest() method called  
+        // to calculate message digest of an input  
+        // and return array of byte 
+        return md.digest(input.getBytes(StandardCharsets.UTF_8));
+    }
 
     /**
      * @param args the command line arguments

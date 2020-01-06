@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto2_edd.EDD;
+package proyecto2_edd.EDD.TABLAHASH;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -14,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import proyecto2_edd.EDD.Usuario;
 
 /**
  *
@@ -27,10 +30,16 @@ public class TablaHash {
     private int ocupados;
     private float porcentajeUtil;
     private float factorUtil;
-    private Usuario[] vectorHash;
+    public Usuario[] vectorHash;
+    String codigoGProblemas = "digraph H {\n"
+            + "tbl [\n"
+            + "shape=plaintext \n"
+            + "label=<\n"
+            + "<table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
+            + "<tr><td> Nombre</td><td> Carnet</td><td> Password</td><td> Problema</td></tr>";
 
     public TablaHash() {
-        this.tamanios = new int[]{23, 29, 37, 43, 47, 53, 59, 67, 73, 79, 83, 89, 97, 103, 107, 113, 127, 137, 149, 157, 167, 179, 197, 211, 227, 239, 251, 263, 277, 293, 311, 997};
+        this.tamanios = new int[]{37, 43, 47, 53, 59, 67, 73, 79, 83, 89, 97, 103, 107, 113, 127, 137, 149, 157, 167, 179, 197, 211, 227, 239, 251, 263, 277, 293, 311, 997};
         this.indiceTam = 0;
         this.factorUtil = 0;
         this.factorUtil = 55.0f;
@@ -114,6 +123,7 @@ public class TablaHash {
                     insertado = true;
                 } else {
                     if (vectorHash[posi].getCarnet().equals(carnet)) {
+                        codigoGProblemas += "<tr><td>" + nombre + "</td><td>" + carnet + "</td><td>" + password + "</td><td> Ya existe el usuario</td></tr> \n";
                         System.out.println("Ya existe el carnet: " + carnet);
                     } else {
                         for (int i = 0; i < tamanio; i++) {
@@ -129,6 +139,7 @@ public class TablaHash {
                                 break;
                             } else {
                                 if (vectorHash[pos].getCarnet().equals(carnet)) {
+                                    codigoGProblemas += "<tr><td>" + nombre + "</td><td>" + carnet + "</td><td>" + password + "</td><td>Ya existe el usuario</td></tr> \n";
                                     System.out.println("Ya existe el carnet: " + carnet);
                                     break;
                                 }
@@ -139,7 +150,7 @@ public class TablaHash {
 
                 /**/
                 if (insertado == true) {
-                    System.out.println("Se inserto correctamente: " + nombre + "con carnet " + carnet );
+                    System.out.println("Se inserto correctamente: " + nombre + "con carnet " + carnet);
                 } else {
                     System.out.println("No se inserto el dato: " + nombre + "Con carnet: " + carnet);
                 }
@@ -149,7 +160,8 @@ public class TablaHash {
                 insertar(nombre, apellido, carnet, password);
             }
         } else {
-            System.out.println("La contraseña es menos a 8 caracteres para el carnet: " + carnet);
+            codigoGProblemas += "<tr><td>" + nombre + "</td><td>" + carnet + "</td><td>" + password + "</td><td>Problema con la contraseña</td></tr> \n";
+            //System.out.println("La contraseña es menos a 8 caracteres para el carnet: " + carnet);
         }
 
     }
@@ -177,23 +189,19 @@ public class TablaHash {
 
     public boolean extraerUser(String carnet, String password) {
         boolean encontrado = false;
-        int pos = 0;
-        for (int i = 0; i < tamanio; i++) {
-            int posi = DobleHashing(carnet, i);
-            if (posi > tamanio) {
-                posi = posi % tamanio;
-                pos = posi;
-            }
-            if (vectorHash[posi] != null) {
-                if (vectorHash[posi].equals(carnet) && vectorHash[posi].equals(password)) {
+        if (password.length() >= 8) {
+            for (int i = 0; i < tamanio-1; i++) {
+                if(vectorHash[i]!=null){
+                    if (vectorHash[i].getCarnet().equals(carnet) && vectorHash[i].getPassword().equals(password)) {
                     encontrado = true;
+                    break;
+                } else {
+                    encontrado = false;
+                }
                 }
             }
-            if (encontrado) {
-                System.out.println("Se encontro: " + carnet);
-            } else {
-                System.out.println("No se encontro: " + carnet);
-            }
+        } else {
+            encontrado = false;
         }
         return encontrado;
     }
@@ -220,6 +228,69 @@ public class TablaHash {
                 insertar(Nombre, Apellido, Carnet, Password);
             }
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String dotProblema() {
+        codigoGProblemas += "</table> \n"
+                + ">];\n"
+                + "}";
+        return codigoGProblemas;
+    }
+
+    public String dotTabla() {
+        String codigoGTabla = "digraph H {\n"
+                + "tbl [\n"
+                + "shape=plaintext \n"
+                + "label=<\n"
+                + "<table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
+                + "<tr><td>Posicion</td><td> Nombre Completo </td><td> Carnet</td><td> Password</td></tr>";
+        for (int i = 0; i < vectorHash.length; i++) {
+            if (vectorHash[i] != null) {
+                codigoGTabla += "<tr><td>" + i + "</td><td>" + vectorHash[i].getNombre() + " " + vectorHash[i].getApellido() + "</td><td>" + vectorHash[i].getCarnet() + "</td><td>" + vectorHash[i].getPassword() + "</td></tr> \n";
+            } else {
+                codigoGTabla += "<tr><td>" + i + "</td><td> </td><td> </td><td> </td></tr> \n";
+            }
+        }
+        codigoGTabla += "</table> \n"
+                + ">];\n"
+                + "}";;
+        return codigoGTabla;
+    }
+
+    public void graficarProblemas() {
+        String problemas = dotProblema();
+        FileWriter file = null;
+        try {
+            file = new FileWriter("problemasDot.dot");
+            file.write(problemas);
+            file.close();
+            String F = "dot -Tpng C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\problemasDot.dot -o problemasDot.png";
+            Process rt = Runtime.getRuntime().exec(F);
+            rt = Runtime.getRuntime().exec(F);;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void graficarHash() {
+        String problemas = dotTabla();
+        FileWriter file = null;
+        try {
+            file = new FileWriter("tablaDot.dot");
+            file.write(problemas);
+            file.close();
+            String F = "dot -Tpng C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\tablaDot.dot -o tablaDot.png";
+            Process rt = Runtime.getRuntime().exec(F);
+            rt = Runtime.getRuntime().exec(F);;
+
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();

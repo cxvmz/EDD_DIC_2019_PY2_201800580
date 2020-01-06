@@ -8,7 +8,7 @@ package proyecto2_edd;
 import java.io.FileInputStream;
 import proyecto2_edd.EDD.ARBOLB.arbolB;
 import proyecto2_edd.EDD.Burbuja;
-import proyecto2_edd.EDD.TablaHash;
+import proyecto2_edd.EDD.TABLAHASH.TablaHash;
 
 /**
  *
@@ -22,19 +22,20 @@ public class Proyecto2_EDD {
     public static void main(String[] args) {
         // TODO code application logic here
         Inicio home = new Inicio();
-        //home.setVisible(true);
+        home.setVisible(true);
+        
+        //Admin ad = new Admin();
+        //ad.setVisible(true);
 
-        TablaHash th = new TablaHash();
 
         //th.LeerJsonUsuario("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Usuarios.json");
-        th.LeerJsonUsuario("C:\\Users\\Christian\\Downloads\\Usuarios.json");
-
-         //Burbuja bb = new Burbuja();
-                //bb.LeerJsonArray("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arreglos.json");
-                //bb.mostrarArray();
-                //bb.ordenamientoBurbuja();
-                //arbolB nuevo = new arbolB(5);
-                //nuevo.LeerJsonArbol("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arbols.json", nuevo);
+        //th.LeerJsonUsuario("C:\\Users\\Christian\\Downloads\\Usuarios.json");
+        //Burbuja bb = new Burbuja();
+        //bb.LeerJsonArray("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arreglos.json");
+        //bb.mostrarArray();
+        //bb.ordenamientoBurbuja();
+        //arbolB nuevo = new arbolB(5);
+        //nuevo.LeerJsonArbol("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arbols.json", nuevo);
     }
 
 }

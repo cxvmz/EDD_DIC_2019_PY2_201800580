@@ -6,6 +6,8 @@
 package proyecto2_edd.EDD.ARBOLB;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,6 +19,7 @@ import org.json.simple.parser.ParseException;
  */
 public class arbolB {
 
+    int imgNum = 0;
     nodoB raiz;
     int m;
 
@@ -109,25 +112,21 @@ public class arbolB {
         return cadena;
 
     }
-    
+
     public String generarcadenadotarbolb() {
-        
+
         String resultado = graficar(raiz);
         resultado = resultado + hacerConexion(raiz);
-      
-        
-        String archivo = "";
-        
-  
-         archivo+="digraph G { node[shape = box;] concentrate=true; graph[splines = ortho]; " +resultado + "}";
 
-            
+        String archivo = "";
+
+        archivo += "digraph G { node[shape = box;] concentrate=true; graph[splines = ortho]; " + resultado + "}";
         System.out.println(archivo);
         return archivo;
-    
+
     }
-    
-    public void LeerJsonArbol(String archivoJson,arbolB nuevo) {
+
+    public void LeerJsonArbol(String archivoJson, arbolB nuevo) {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader(archivoJson));
@@ -137,15 +136,31 @@ public class arbolB {
                 JSONObject user = (JSONObject) input.get(i);
                 String num = (String) user.get("num").toString();
                 nuevo.insertar(Integer.parseInt(num));
-                nuevo.generarcadenadotarbolb();
-                Thread.sleep(5000);
+                nuevo.pngArbol(generarcadenadotarbolb());
+                //Thread.sleep(5000);
             }
         } catch (ParseException e) {
             e.printStackTrace();
-        } catch(InterruptedException e){
+        //} catch (InterruptedException e) {
+          //  e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        catch (Exception e) {
+    }
+
+    public void pngArbol(String arbol) {
+        FileWriter file = null;
+        try {
+            file = new FileWriter("arbol" + imgNum + ".dot");
+            file.write(arbol);
+            file.close();
+            String F = "dot -Tpng C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\arbol" + imgNum + ".dot -o arbol" + imgNum + ".png";
+            Process rt = Runtime.getRuntime().exec(F);
+            rt = Runtime.getRuntime().exec(F);;
+            imgNum++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
