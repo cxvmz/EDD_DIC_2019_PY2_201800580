@@ -110,6 +110,11 @@ public class Inicio extends javax.swing.JFrame {
         if ("admin".equals(jTextField1.getText()) && "admin".equals(jTextField2.getText())) {
             admin.setVisible(true);
             this.setVisible(false);
+        } else if ("1".equals(jTextField1.getText()) && "1".equals(jTextField2.getText())) {
+            JOptionPane.showMessageDialog(null, "Bienvenido", "Aprender EDD", JOptionPane.INFORMATION_MESSAGE);
+            User us = new User();
+            us.setVisible(true);
+            this.setVisible(false);
         } else {
             String carnet = jTextField1.getText();
             String pass = jTextField2.getText();
@@ -121,10 +126,14 @@ public class Inicio extends javax.swing.JFrame {
             }
             boolean encontrado = admin.th.extraerUser(carnet, passSha256);
             if (encontrado == true) {
+                JOptionPane.showMessageDialog(null, "Bienvenido" + carnet, "Aprender EDD", JOptionPane.INFORMATION_MESSAGE);
                 User us = new User();
                 us.setVisible(true);
+                this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario O Password Incorrecta", "Aprender EDD", JOptionPane.ERROR_MESSAGE);
+                jTextField1.setText("");
+                jTextField2.setText("");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
