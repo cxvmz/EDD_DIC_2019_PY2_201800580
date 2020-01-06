@@ -158,7 +158,7 @@ public class arbolB extends JFrame {
             file = new FileWriter("arbol" + imgNum + ".dot");
             file.write(arbol);
             file.close();
-            String F = "dot -Tpng C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\arbol" + imgNum + ".dot -o arbol" + imgNum + ".png";
+            String F = "dot -Tpng arbol" + imgNum + ".dot -o arbol" + imgNum + ".png";
             Process rt = Runtime.getRuntime().exec(F);
             rt = Runtime.getRuntime().exec(F);;
             Thread.sleep(1000);

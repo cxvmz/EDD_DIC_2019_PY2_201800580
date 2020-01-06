@@ -162,7 +162,7 @@ public class ArbolBAutomatico extends javax.swing.JFrame {
         AB.insertar(Integer.parseInt(jTextField2.getText()));
         AB.pngArbol(AB.generarcadenadotarbolb());
         int pos = AB.imgNum - 1;
-        Image imgArbol = new ImageIcon("C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\arbol" + pos + ".png").getImage();
+        Image imgArbol = new ImageIcon("arbol" + pos + ".png").getImage();
         ImageIcon imgArbol1 = new ImageIcon(imgArbol);
         jLabel1.setIcon(imgArbol1);
         jTextField2.setText("");
@@ -173,7 +173,7 @@ public class ArbolBAutomatico extends javax.swing.JFrame {
         AB.raiz.eliminar(Integer.parseInt(jTextField3.getText()));
         AB.pngArbol(AB.generarcadenadotarbolb());
         int pos = AB.imgNum - 1;
-        Image imgArbol = new ImageIcon("C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\arbol" + pos + ".png").getImage();
+        Image imgArbol = new ImageIcon("arbol" + pos + ".png").getImage();
         ImageIcon imgArbol1 = new ImageIcon(imgArbol);
         jLabel1.setIcon(imgArbol1);
         jTextField3.setText("");

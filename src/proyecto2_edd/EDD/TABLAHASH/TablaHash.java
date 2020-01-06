@@ -31,12 +31,8 @@ public class TablaHash {
     private float porcentajeUtil;
     private float factorUtil;
     public Usuario[] vectorHash;
-    String codigoGProblemas = "digraph H {\n"
-            + "tbl [\n"
-            + "shape=plaintext \n"
-            + "label=<\n"
-            + "<table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
-            + "<tr><td> Nombre</td><td> Carnet</td><td> Password</td><td> Problema</td></tr>";
+    String codigoGProblemas = "";
+    String CGP="";
 
     public TablaHash() {
         this.tamanios = new int[]{37, 43, 47, 53, 59, 67, 73, 79, 83, 89, 97, 103, 107, 113, 127, 137, 149, 157, 167, 179, 197, 211, 227, 239, 251, 263, 277, 293, 311, 997};
@@ -232,10 +228,18 @@ public class TablaHash {
     }
 
     public String dotProblema() {
-        codigoGProblemas += "</table> \n"
+        CGP +="digraph H {\n"
+            + "tbl [\n"
+            + "shape=plaintext \n"
+            + "label=<\n"
+            + "<table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
+            + "<tr><td> Nombre</td><td> Carnet</td><td> Password</td><td> Problema</td></tr>";
+        
+        CGP+=codigoGProblemas;
+        CGP += "</table> \n"
                 + ">];\n"
                 + "}";
-        return codigoGProblemas;
+        return CGP;
     }
 
     public String dotTabla() {
@@ -254,7 +258,7 @@ public class TablaHash {
         }
         codigoGTabla += "</table> \n"
                 + ">];\n"
-                + "}";;
+                + "}";
         return codigoGTabla;
     }
 
@@ -265,7 +269,7 @@ public class TablaHash {
             file = new FileWriter("problemasDot.dot");
             file.write(problemas);
             file.close();
-            String F = "dot -Tpng C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\problemasDot.dot -o problemasDot.png";
+            String F = "dot -Tpng problemasDot.dot -o problemasDot.png";
             Process rt = Runtime.getRuntime().exec(F);
             rt = Runtime.getRuntime().exec(F);;
 
@@ -275,6 +279,10 @@ public class TablaHash {
             e.printStackTrace();
         }
     }
+    
+    public void resetProblemas(){
+        CGP="";
+    }
 
     public void graficarHash() {
         String problemas = dotTabla();
@@ -283,7 +291,7 @@ public class TablaHash {
             file = new FileWriter("tablaDot.dot");
             file.write(problemas);
             file.close();
-            String F = "dot -Tpng C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\tablaDot.dot -o tablaDot.png";
+            String F = "dot -Tpng tablaDot.dot -o tablaDot.png";
             Process rt = Runtime.getRuntime().exec(F);
             rt = Runtime.getRuntime().exec(F);;
 

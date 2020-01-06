@@ -34,7 +34,7 @@ public class HiloArbolB extends Thread {
             try {
 
                 if (inicio != imgNum) {
-                    Image imgArbol = new ImageIcon("C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\arbol" + inicio + ".png").getImage();
+                    Image imgArbol = new ImageIcon("arbol" + inicio + ".png").getImage();
                     ImageIcon imgArbol1 = new ImageIcon(imgArbol);
                     mostrar.setIcon(imgArbol1);
                     Thread.sleep(3000);
