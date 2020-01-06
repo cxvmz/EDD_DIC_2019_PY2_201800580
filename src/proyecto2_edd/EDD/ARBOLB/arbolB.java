@@ -5,9 +5,13 @@
  */
 package proyecto2_edd.EDD.ARBOLB;
 
+import java.awt.Image;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,10 +21,10 @@ import org.json.simple.parser.ParseException;
  *
  * @author Christian
  */
-public class arbolB {
+public class arbolB extends JFrame {
 
-    int imgNum = 0;
-    nodoB raiz;
+    public int imgNum = 0;
+    public nodoB raiz;
     int m;
 
     public arbolB(int m) {
@@ -142,7 +146,7 @@ public class arbolB {
         } catch (ParseException e) {
             e.printStackTrace();
         //} catch (InterruptedException e) {
-          //  e.printStackTrace();
+           // e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -157,6 +161,7 @@ public class arbolB {
             String F = "dot -Tpng C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\arbol" + imgNum + ".dot -o arbol" + imgNum + ".png";
             Process rt = Runtime.getRuntime().exec(F);
             rt = Runtime.getRuntime().exec(F);;
+            Thread.sleep(1000);
             imgNum++;
         } catch (IOException e) {
             e.printStackTrace();

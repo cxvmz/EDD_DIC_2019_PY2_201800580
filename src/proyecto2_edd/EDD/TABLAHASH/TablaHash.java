@@ -113,9 +113,6 @@ public class TablaHash {
         if (password.length() >= 8) {
             if (porcentajeUtil <= 55.00f) {
                 int posi = funcion1(carnet);
-                if (posi > tamanio - 1) {
-                    posi = posi % tamanio;
-                }
                 if (vectorHash[posi] == null) {
                     vectorHash[posi] = new Usuario(nombre, apellido, carnet, passSha256);
                     ocupados += 1;
