@@ -6,6 +6,7 @@
 package proyecto2_edd;
 
 import java.io.FileInputStream;
+import proyecto2_edd.ARBOLAVL.arbolAvl;
 import proyecto2_edd.EDD.ARBOLB.arbolB;
 import proyecto2_edd.EDD.Burbuja;
 import proyecto2_edd.EDD.TABLAHASH.TablaHash;
@@ -36,6 +37,15 @@ public class Proyecto2_EDD {
         //bb.ordenamientoBurbuja();
         //arbolB nuevo = new arbolB(5);
         //nuevo.LeerJsonArbol("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arbols.json", nuevo);
+        
+        arbolAvl avl= new arbolAvl();
+        avl.LeerJsonArbol("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arbols.json");
+        System.out.println("in");
+        avl.inOrder(avl.raiz);
+        System.out.println("\n post");
+        avl.postOrder(avl.raiz);
+        System.out.println("\n pre");
+        avl.preOrder(avl.raiz);
     }
 
 }

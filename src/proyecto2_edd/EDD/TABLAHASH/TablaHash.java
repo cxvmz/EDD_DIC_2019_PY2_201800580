@@ -32,7 +32,7 @@ public class TablaHash {
     private float factorUtil;
     public Usuario[] vectorHash;
     String codigoGProblemas = "";
-    String CGP="";
+    String CGP = "";
 
     public TablaHash() {
         this.tamanios = new int[]{37, 43, 47, 53, 59, 67, 73, 79, 83, 89, 97, 103, 107, 113, 127, 137, 149, 157, 167, 179, 197, 211, 227, 239, 251, 263, 277, 293, 311, 997};
@@ -183,14 +183,14 @@ public class TablaHash {
     public boolean extraerUser(String carnet, String password) {
         boolean encontrado = false;
         if (password.length() >= 8) {
-            for (int i = 0; i < tamanio-1; i++) {
-                if(vectorHash[i]!=null){
+            for (int i = 0; i < tamanio - 1; i++) {
+                if (vectorHash[i] != null) {
                     if (vectorHash[i].getCarnet().equals(carnet) && vectorHash[i].getPassword().equals(password)) {
-                    encontrado = true;
-                    break;
-                } else {
-                    encontrado = false;
-                }
+                        encontrado = true;
+                        break;
+                    } else {
+                        encontrado = false;
+                    }
                 }
             }
         } else {
@@ -228,23 +228,23 @@ public class TablaHash {
     }
 
     public String dotProblema() {
-        CGP +="digraph H {\n"
-            + "tbl [\n"
-            + "shape=plaintext \n"
-            + "label=<\n"
-            + "<table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
-            + "<tr><td> Nombre</td><td> Carnet</td><td> Password</td><td> Problema</td></tr>";
-        
-        CGP+=codigoGProblemas;
+        CGP += "digraph Z {\n"
+                + "tble [\n"
+                + "shape=plaintext \n"
+                + "label=<\n"
+                + "<table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
+                + "<tr><td>Posicion</td><td> Nombre Completo </td><td> Carnet</td><td> Password</td></tr>";
+
+        CGP += codigoGProblemas;
         CGP += "</table> \n"
-                + ">];\n"
+                + ">]\n"
                 + "}";
         return CGP;
     }
 
     public String dotTabla() {
-        String codigoGTabla = "digraph H {\n"
-                + "tbl [\n"
+        String codigoGTabla = "digraph Z {\n"
+                + "tble [\n"
                 + "shape=plaintext \n"
                 + "label=<\n"
                 + "<table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
@@ -266,34 +266,40 @@ public class TablaHash {
         String problemas = dotProblema();
         FileWriter file = null;
         try {
+            Thread.sleep(100);
             file = new FileWriter("problemasDot.dot");
             file.write(problemas);
+            Thread.sleep(100);
             file.close();
+            Thread.sleep(100);
             String F = "dot -Tpng problemasDot.dot -o problemasDot.png";
-            Process rt = Runtime.getRuntime().exec(F);
-            rt = Runtime.getRuntime().exec(F);;
-
+            Thread.sleep(100);
+            Process rt1 = Runtime.getRuntime().exec(F);
+            Thread.sleep(100);
+            rt1 = Runtime.getRuntime().exec(F);;
+            Thread.sleep(100);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void resetProblemas(){
-        CGP="";
+
+    public void resetProblemas() {
+        CGP = "";
     }
 
     public void graficarHash() {
-        String problemas = dotTabla();
+        String hash = dotTabla();
         FileWriter file = null;
         try {
             file = new FileWriter("tablaDot.dot");
-            file.write(problemas);
+            file.write(hash);
             file.close();
             String F = "dot -Tpng tablaDot.dot -o tablaDot.png";
             Process rt = Runtime.getRuntime().exec(F);
             rt = Runtime.getRuntime().exec(F);;
+            Thread.sleep(500);
 
         } catch (IOException e) {
             e.printStackTrace();

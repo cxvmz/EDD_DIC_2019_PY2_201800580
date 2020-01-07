@@ -120,7 +120,16 @@ public class Admin extends javax.swing.JFrame {
             this.jTextField1.setText(archivo.getAbsolutePath());
             th.LeerJsonUsuario(archivo.getAbsolutePath());
             th.graficarProblemas();
+            th.resetProblemas();
             th.graficarHash();
+
+            Image imgProblema = new ImageIcon("problemasDot.png").getImage();
+            ImageIcon imgProblema2 = new ImageIcon(imgProblema);
+            Image imgTabla = new ImageIcon("tablaDot.png").getImage();
+            ImageIcon imgTabla2 = new ImageIcon(imgTabla);
+
+            jLabel3.setIcon(imgTabla2);
+            jLabel1.setIcon(imgProblema2);
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -138,9 +147,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        th.graficarProblemas();
-        th.resetProblemas();
-        th.graficarHash();
+
         Image imgProblema = new ImageIcon("problemasDot.png").getImage();
         Image imgTabla = new ImageIcon("tablaDot.png").getImage();
 
@@ -149,6 +156,7 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel3.setIcon(imgTabla2);
         jLabel1.setIcon(imgProblema1);
+        this.repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
