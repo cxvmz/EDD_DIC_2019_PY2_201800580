@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import proyecto2_edd.ARBOLAVL.arbolAvl;
 import proyecto2_edd.EDD.ARBOLB.arbolB;
 import proyecto2_edd.EDD.Burbuja;
+import proyecto2_edd.EDD.Grafo.listaG;
 import proyecto2_edd.EDD.Ordenamientos.Insercion;
 import proyecto2_edd.EDD.Ordenamientos.qs;
 import proyecto2_edd.EDD.TABLAHASH.TablaHash;
@@ -48,7 +49,10 @@ public class Proyecto2_EDD {
         //System.out.println("\n pre");
         //avl.preOrder(avl.raiz);
         //avl.graficar(avl.raiz);
-
+        
+        
+        //listaG ls = new listaG();
+        //ls.LeerJsonArray("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\EjemploGrafo.json");
     }
 
 }

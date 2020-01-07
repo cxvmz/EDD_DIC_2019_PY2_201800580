@@ -6,6 +6,7 @@
 package proyecto2_edd;
 
 import proyecto2_edd.guiArboles.TiposDeArboles;
+import proyecto2_edd.guiGrafos.grafos;
 import proyecto2_edd.guiOrdenamientos.Ordenamientos;
 
 /**
@@ -104,7 +105,7 @@ public class User extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Grafos g = new Grafos();
+        grafos g = new grafos();
         g.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -1,4 +1,0 @@
-digraph G { node[shape = box;] concentrate=true; graph[splines = ortho]; nodo45[shape = record label = "{dato: 45  Altura: 1}"]nodo45
-nodo6[shape = record label = "{dato: 6  Altura: 0}"]nodo6
-nodo45->nodo6
-}
