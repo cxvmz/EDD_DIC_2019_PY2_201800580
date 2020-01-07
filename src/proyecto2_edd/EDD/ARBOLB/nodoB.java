@@ -313,7 +313,7 @@ public class nodoB {
     void combinarRaizIzq() {
         padre.esHoja = esHoja;
         padre.llaves[m / 2 - 1] = padre.llaves[0];
-        nodoB aux = padre.hijos[1]; 
+        nodoB aux = padre.hijos[1];
         int i = 0;
         for (i = 0; i < n; i++) {
             padre.llaves[i] = llaves[i];
@@ -321,11 +321,11 @@ public class nodoB {
             if (!padre.esHoja) {
                 padre.hijos[i].padre = padre;
             }
-            padre.n++; 
+            padre.n++;
         }
         padre.hijos[i] = hijos[i];
         if (!padre.esHoja) {
-            padre.hijos[i].padre = padre; 
+            padre.hijos[i].padre = padre;
         }
         int z = 0;
         for (z = 0; z < aux.n; z++) {
@@ -346,7 +346,7 @@ public class nodoB {
     void combinarRaizDer() {
         padre.esHoja = esHoja;
         padre.llaves[m / 2] = padre.llaves[0];
-        nodoB aux = padre.hijos[0]; 
+        nodoB aux = padre.hijos[0];
         int i = 0;
         for (i = 0; i < n; i++) {
             padre.llaves[m / 2 + 1 + i] = llaves[i];

@@ -123,14 +123,6 @@ public class Admin extends javax.swing.JFrame {
             th.resetProblemas();
             th.graficarHash();
 
-            Image imgProblema = new ImageIcon("problemasDot.png").getImage();
-            ImageIcon imgProblema2 = new ImageIcon(imgProblema);
-            Image imgTabla = new ImageIcon("tablaDot.png").getImage();
-            ImageIcon imgTabla2 = new ImageIcon(imgTabla);
-
-            jLabel3.setIcon(imgTabla2);
-            jLabel1.setIcon(imgProblema2);
-
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -149,14 +141,12 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Image imgProblema = new ImageIcon("problemasDot.png").getImage();
+        ImageIcon imgProblema2 = new ImageIcon(imgProblema);
         Image imgTabla = new ImageIcon("tablaDot.png").getImage();
-
-        ImageIcon imgProblema1 = new ImageIcon(imgProblema);
         ImageIcon imgTabla2 = new ImageIcon(imgTabla);
 
         jLabel3.setIcon(imgTabla2);
-        jLabel1.setIcon(imgProblema1);
-        this.repaint();
+        jLabel1.setIcon(imgProblema2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

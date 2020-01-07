@@ -85,7 +85,7 @@ public class arbolB extends JFrame {
                 i++;
             }
 
-            codigoGunido = codigoGunido + "\"]";// + char(10);
+            codigoGunido = codigoGunido + "\"]";
 
         }
 

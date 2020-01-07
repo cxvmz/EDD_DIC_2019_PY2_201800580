@@ -276,7 +276,7 @@ public class TablaHash {
             Thread.sleep(100);
             Process rt1 = Runtime.getRuntime().exec(F);
             Thread.sleep(100);
-            rt1 = Runtime.getRuntime().exec(F);;
+            rt1 = Runtime.getRuntime().exec(F);
             Thread.sleep(100);
         } catch (IOException e) {
             e.printStackTrace();

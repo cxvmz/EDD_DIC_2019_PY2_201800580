@@ -24,11 +24,9 @@ public class Proyecto2_EDD {
         // TODO code application logic here
         Inicio home = new Inicio();
         home.setVisible(true);
-        
+
         //Admin ad = new Admin();
         //ad.setVisible(true);
-
-
         //th.LeerJsonUsuario("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Usuarios.json");
         //th.LeerJsonUsuario("C:\\Users\\Christian\\Downloads\\Usuarios.json");
         //Burbuja bb = new Burbuja();
@@ -37,15 +35,18 @@ public class Proyecto2_EDD {
         //bb.ordenamientoBurbuja();
         //arbolB nuevo = new arbolB(5);
         //nuevo.LeerJsonArbol("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arbols.json", nuevo);
-        
-        arbolAvl avl= new arbolAvl();
-        avl.LeerJsonArbol("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arbols.json");
-        System.out.println("in");
-        avl.inOrder(avl.raiz);
-        System.out.println("\n post");
-        avl.postOrder(avl.raiz);
-        System.out.println("\n pre");
-        avl.preOrder(avl.raiz);
+        //arbolAvl avl = new arbolAvl();
+        //avl.LeerJsonArbol("C:\\Users\\Christian\\Desktop\\Archivos de Entrada\\Arbols.json");
+
+
+        //System.out.println("in");
+        //avl.inOrder(avl.raiz);
+        //System.out.println("\n post");
+        //avl.postOrder(avl.raiz);
+        //System.out.println("\n pre");
+        //avl.preOrder(avl.raiz);
+        //avl.graficar(avl.raiz);
+
     }
 
 }

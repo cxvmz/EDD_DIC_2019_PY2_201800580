@@ -10,22 +10,21 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import proyecto2_edd.EDD.ARBOLB.HiloArbolB;
-import proyecto2_edd.EDD.ARBOLB.arbolB;
+import proyecto2_edd.ARBOLAVL.arbolAvl;
 
 /**
  *
  * @author Christian
  */
-public class ArbolBGuiado extends javax.swing.JFrame {
+public class ArbolAvlGuiado extends javax.swing.JFrame {
 
     /**
-     * Creates new form ArbolBGuiado
+     * Creates new form ArbolAvlGuiado
      */
-    public ArbolBGuiado() {
+    public ArbolAvlGuiado() {
         initComponents();
     }
-    arbolB AB = new arbolB(5);
+    arbolAvl AV = new arbolAvl();
     int sig = 0;
 
     /**
@@ -113,7 +112,7 @@ public class ArbolBGuiado extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 20, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,22 +131,44 @@ public class ArbolBGuiado extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        AB.raiz.eliminar(Integer.parseInt(jTextField3.getText()));
-        AB.pngArbol(AB.generarcadenadotarbolb());
-        int pos = AB.imgNum - 1;
-        Image imgArbol = new ImageIcon("arbol" + pos + ".png").getImage();
+        JFileChooser fc = new JFileChooser();
+        int select = fc.showOpenDialog(this);
+        if (select == JFileChooser.APPROVE_OPTION) {
+            File archivo = fc.getSelectedFile();
+            this.jTextField1.setText(archivo.getAbsolutePath());
+            AV.LeerJsonArbol(archivo.getAbsolutePath());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        AV.insertar(Integer.parseInt(jTextField2.getText()));
+        AV.pngArbol(AV.graficar(AV.raiz));
+        int pos = AV.imgNum - 1;
+        Image imgArbol = new ImageIcon("avl" + pos + ".png").getImage();
         ImageIcon imgArbol1 = new ImageIcon(imgArbol);
         jLabel1.setIcon(imgArbol1);
-        jTextField3.setText("");
+        jTextField2.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        //AB.raiz.eliminar(Integer.parseInt(jTextField3.getText()));
+        //AB.pngArbol(AB.generarcadenadotarbolb());
+        //int pos = AB.imgNum - 1;
+        //Image imgArbol = new ImageIcon("C:\\Users\\Christian\\Documents\\NetBeansProjects\\Proyecto2_EDD\\arbol" + pos + ".png").getImage();
+        //ImageIcon imgArbol1 = new ImageIcon(imgArbol);
+        //jLabel1.setIcon(imgArbol1);
+        //jTextField3.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -157,33 +178,11 @@ public class ArbolBGuiado extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        AB.insertar(Integer.parseInt(jTextField2.getText()));
-        AB.pngArbol(AB.generarcadenadotarbolb());
-        int pos = AB.imgNum - 1;
-        Image imgArbol = new ImageIcon("arbol" + pos + ".png").getImage();
-        ImageIcon imgArbol1 = new ImageIcon(imgArbol);
-        jLabel1.setIcon(imgArbol1);
-        jTextField2.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        JFileChooser fc = new JFileChooser();
-        int select = fc.showOpenDialog(this);
-        if (select == JFileChooser.APPROVE_OPTION) {
-            File archivo = fc.getSelectedFile();
-            this.jTextField1.setText(archivo.getAbsolutePath());
-            AB.LeerJsonArbol(archivo.getAbsolutePath(), AB);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
 
-        if (sig <= AB.imgNum - 1) {
-            Image imgArbol = new ImageIcon("arbol" + sig + ".png").getImage();
+        if (sig <= AV.imgNum - 1) {
+            Image imgArbol = new ImageIcon("avl" + sig + ".png").getImage();
             ImageIcon imgArbol1 = new ImageIcon(imgArbol);
             jLabel1.setIcon(imgArbol1);
             sig++;
@@ -209,20 +208,20 @@ public class ArbolBGuiado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ArbolBGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ArbolAvlGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ArbolBGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ArbolAvlGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ArbolBGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ArbolAvlGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ArbolBGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ArbolAvlGuiado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ArbolBGuiado().setVisible(true);
+                new ArbolAvlGuiado().setVisible(true);
             }
         });
     }
