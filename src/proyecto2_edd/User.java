@@ -5,6 +5,9 @@
  */
 package proyecto2_edd;
 
+import proyecto2_edd.guiArboles.TiposDeArboles;
+import proyecto2_edd.guiOrdenamientos.Ordenamientos;
+
 /**
  *
  * @author Christian

@@ -21,7 +21,7 @@ import proyecto2_edd.EDD.ARBOLB.arbolB;
 public class arbolAvl {
 
     public nodoAvl raiz;
-    public int imgNum=0;
+    public int imgNum = 0;
 
     public arbolAvl() {
         this.raiz = null;
@@ -133,28 +133,38 @@ public class arbolAvl {
         }
     }
 
-    public void inOrder(nodoAvl recorrido) {
+    public String inOrder(nodoAvl recorrido) {
+        String f = "";
         if (recorrido != null) {
-            inOrder(recorrido.hijoIzquierdo);
-            System.out.print(recorrido.dato + ",");
-            inOrder(recorrido.hijoDerecho);
+            f +=inOrder(recorrido.hijoIzquierdo);
+            f += " " + recorrido.dato;
+            f +=inOrder(recorrido.hijoDerecho);
         }
+        return f;
     }
 
-    public void preOrder(nodoAvl recorrido) {
+    public String preOrder(nodoAvl recorrido) {
+        String f = "";
+
         if (recorrido != null) {
-            System.out.print(recorrido.dato + ",");
-            preOrder(recorrido.hijoIzquierdo);
-            preOrder(recorrido.hijoDerecho);
+            f += " " + recorrido.dato;
+            f +=preOrder(recorrido.hijoIzquierdo);
+            f +=preOrder(recorrido.hijoDerecho);
         }
+        return f;
+
     }
 
-    public void postOrder(nodoAvl recorrido) {
+    public String postOrder(nodoAvl recorrido) {
+        String f = "";
+
         if (recorrido != null) {
-            preOrder(recorrido.hijoIzquierdo);
-            preOrder(recorrido.hijoDerecho);
-            System.out.print(recorrido.dato + ",");
+            f +=preOrder(recorrido.hijoIzquierdo);
+            f +=preOrder(recorrido.hijoDerecho);
+            f += " " + recorrido.dato;
         }
+        return f;
+
     }
 
     public void LeerJsonArbol(String archivoJson) {
@@ -195,7 +205,7 @@ public class arbolAvl {
     public String graficarNodo(nodoAvl r) {
         String codigoNodo = "";
         if (r != null) {
-            codigoNodo += "nodo" + r.dato + "[shape = record label = \"{dato: " + r.dato +"  Altura: "+r.fe + "}\"]nodo" + r.dato + "\n";
+            codigoNodo += "nodo" + r.dato + "[shape = record label = \"{dato: " + r.dato + "  Altura: " + r.fe + "}\"]nodo" + r.dato + "\n";
             codigoNodo += graficarNodo(r.hijoIzquierdo);
             codigoNodo += graficarNodo(r.hijoDerecho);
         }
@@ -217,7 +227,7 @@ public class arbolAvl {
         }
         return codigoNodo;
     }
-    
+
     public void pngArbol(String arbol) {
         FileWriter file = null;
         try {

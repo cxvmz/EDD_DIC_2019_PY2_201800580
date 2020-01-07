@@ -6,6 +6,8 @@
 package proyecto2_edd.EDD;
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,7 +19,8 @@ import org.json.simple.parser.ParseException;
  */
 public class Burbuja {
 
-    int arreglo[];
+    public int arreglo[];
+    public int imgNum = 0;
 
     public void LeerJsonArray(String archivoJson) {
         JSONParser parser = new JSONParser();
@@ -52,9 +55,8 @@ public class Burbuja {
                     int aux = arreglo[j];
                     arreglo[j] = arreglo[j + 1];
                     arreglo[j + 1] = aux;
+                    pngbb(codigoTxt());
                 }
-                String f = codigoTxt();
-                System.out.println(f);
             }
         }
     }
@@ -65,8 +67,8 @@ public class Burbuja {
                 + "abc [shape=none, margin=0, label=<\n"
                 + "<TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\" CELLPADDING=\"4\">\n"
                 + "<TR>";
-        for (int i = 0; i < arreglo.length-1; i++) {
-                    codigoG += "<TD BGCOLOR=\"lightgrey\" >" + arreglo[i] + "</TD>";
+        for (int i = 0; i < arreglo.length; i++) {
+            codigoG += "<TD BGCOLOR=\"lightgrey\" >" + arreglo[i] + "</TD>";
         }
         codigoG += "</TR>\n"
                 + "</TABLE>\n"
@@ -74,5 +76,23 @@ public class Burbuja {
                 + "}";
 
         return codigoG;
+    }
+
+    public void pngbb(String arbol) {
+        FileWriter file = null;
+        try {
+            file = new FileWriter("bb" + imgNum + ".dot");
+            file.write(arbol);
+            file.close();
+            String F = "dot -Tpng bb" + imgNum + ".dot -o bb" + imgNum + ".png";
+            Process rt = Runtime.getRuntime().exec(F);
+            rt = Runtime.getRuntime().exec(F);;
+            Thread.sleep(250);
+            imgNum++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

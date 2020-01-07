@@ -1,0 +1,4 @@
+digraph G { node[shape = box;] concentrate=true; graph[splines = ortho]; nodo5[shape = record label = "{1}|{6}"]nodo6[shape = record label = "{45}|{89}"]nodo7[shape = record label = "{200}|{300}"]nodo4[shape = record label = "{8}|{100}"]nodo4->nodo5
+nodo4->nodo6
+nodo4->nodo7
+nodo4}

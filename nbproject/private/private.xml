@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/User.java</file>
-            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/EDD/TABLAHASH/TablaHash.java</file>
-            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/Admin.java</file>
+            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/EDD/Ordenamientos/Burbuja.java</file>
+            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/EDD/Ordenamientos/qs.java</file>
+            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/Proyecto2_EDD.java</file>
+            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/guiOrdenamientos/OrQ.java</file>
+            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/EDD/Ordenamientos/Insercion.java</file>
+            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/guiOrdenamientos/Ordenamientos.java</file>
+            <file>file:/C:/Users/Christian/Documents/NetBeansProjects/Proyecto2_EDD/src/proyecto2_edd/EDD/Ordenamientos/HiloBurbuja.java</file>
         </group>
     </open-files>
 </project-private>
