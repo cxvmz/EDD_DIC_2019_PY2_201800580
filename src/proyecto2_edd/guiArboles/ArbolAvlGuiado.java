@@ -204,6 +204,9 @@ public class ArbolAvlGuiado extends javax.swing.JFrame {
         ImageIcon imgArbol1 = new ImageIcon(imgArbol);
         jLabel1.setIcon(imgArbol1);
         jTextField2.setText("");
+        jTextField4.setText(AV.inOrder(AV.raiz));
+        jTextField5.setText(AV.postOrder(AV.raiz));
+        jTextField6.setText(AV.preOrder(AV.raiz));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -219,7 +222,7 @@ public class ArbolAvlGuiado extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        TipoArbolB TAB = new TipoArbolB();
+        TipoArbolAvl TAB = new TipoArbolAvl();
         TAB.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed

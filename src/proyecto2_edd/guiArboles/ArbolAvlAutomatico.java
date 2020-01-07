@@ -193,7 +193,7 @@ public class ArbolAvlAutomatico extends javax.swing.JFrame {
             File archivo = fc.getSelectedFile();
             this.jTextField1.setText(archivo.getAbsolutePath());
             AV.LeerJsonArbol(archivo.getAbsolutePath());
-            Thread hiloAV = new HiloArbolAvl(AV.imgNum, jLabel1,jTextField4,jTextField5,jTextField6,AV);
+            Thread hiloAV = new HiloArbolAvl(AV.imgNum, jLabel1, jTextField4, jTextField5, jTextField6, AV);
             hiloAV.start();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -211,6 +211,10 @@ public class ArbolAvlAutomatico extends javax.swing.JFrame {
         ImageIcon imgArbol1 = new ImageIcon(imgArbol);
         jLabel1.setIcon(imgArbol1);
         jTextField2.setText("");
+        jTextField4.setText(AV.inOrder(AV.raiz));
+        jTextField5.setText(AV.postOrder(AV.raiz));
+        jTextField6.setText(AV.preOrder(AV.raiz));
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

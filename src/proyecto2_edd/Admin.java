@@ -39,10 +39,10 @@ public class Admin extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,8 +54,6 @@ public class Admin extends javax.swing.JFrame {
         });
 
         jScrollPane1.setViewportView(jLabel3);
-
-        jScrollPane2.setViewportView(jLabel1);
 
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +69,8 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane4.setViewportView(jLabel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,6 +78,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -87,8 +88,7 @@ public class Admin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 17, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane4))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -103,7 +103,7 @@ public class Admin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -119,10 +119,6 @@ public class Admin extends javax.swing.JFrame {
             File archivo = fc.getSelectedFile();
             this.jTextField1.setText(archivo.getAbsolutePath());
             th.LeerJsonUsuario(archivo.getAbsolutePath());
-            th.graficarProblemas();
-            th.resetProblemas();
-            th.graficarHash();
-
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -140,7 +136,7 @@ public class Admin extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        Image imgProblema = new ImageIcon("problemasDot.png").getImage();
+        Image imgProblema = new ImageIcon("f.png").getImage();
         ImageIcon imgProblema2 = new ImageIcon(imgProblema);
         Image imgTabla = new ImageIcon("tablaDot.png").getImage();
         ImageIcon imgTabla2 = new ImageIcon(imgTabla);
@@ -149,6 +145,8 @@ public class Admin extends javax.swing.JFrame {
         jLabel1.setIcon(imgProblema2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -191,7 +189,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

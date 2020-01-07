@@ -32,7 +32,6 @@ public class TablaHash {
     private float factorUtil;
     public Usuario[] vectorHash;
     String codigoGProblemas = "";
-    String CGP = "";
 
     public TablaHash() {
         this.tamanios = new int[]{37, 43, 47, 53, 59, 67, 73, 79, 83, 89, 97, 103, 107, 113, 127, 137, 149, 157, 167, 179, 197, 211, 227, 239, 251, 263, 277, 293, 311, 997};
@@ -225,10 +224,13 @@ public class TablaHash {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        graficarHash();
+
+        graficarProblemas();
     }
 
     public String dotProblema() {
-        CGP += "digraph Z {\n"
+        String CGP = "digraph Z {\n"
                 + "tble [\n"
                 + "shape=plaintext \n"
                 + "label=<\n"
@@ -237,7 +239,7 @@ public class TablaHash {
 
         CGP += codigoGProblemas;
         CGP += "</table> \n"
-                + ">]\n"
+                + ">];\n"
                 + "}";
         return CGP;
     }
@@ -266,27 +268,18 @@ public class TablaHash {
         String problemas = dotProblema();
         FileWriter file = null;
         try {
-            Thread.sleep(100);
-            file = new FileWriter("problemasDot.dot");
+            file = new FileWriter("F.dot");
             file.write(problemas);
-            Thread.sleep(100);
             file.close();
-            Thread.sleep(100);
-            String F = "dot -Tpng problemasDot.dot -o problemasDot.png";
-            Thread.sleep(100);
-            Process rt1 = Runtime.getRuntime().exec(F);
-            Thread.sleep(100);
-            rt1 = Runtime.getRuntime().exec(F);
-            Thread.sleep(100);
+            String F = "dot -Tpng F.dot -o F.png";
+            Process rt = Runtime.getRuntime().exec(F);
+            rt = Runtime.getRuntime().exec(F);;
+            Thread.sleep(500);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void resetProblemas() {
-        CGP = "";
     }
 
     public void graficarHash() {
